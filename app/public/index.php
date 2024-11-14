@@ -1,5 +1,6 @@
 <?php
+(@include '../src/app.php') or die('Could not run an app');
 
-echo "Hello World!";
-
+$app = new App();
+$app->HelloWorld();
 ?>
