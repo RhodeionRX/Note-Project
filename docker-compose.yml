@@ -1,0 +1,17 @@
+services:
+  server:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./config/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - ./app/:/var/www
+    working_dir: /var/www
+    links:
+      - app
+  app:
+    build:
+      context: .
+      dockerfile: _docker/Dockerfile
+    volumes:
+      - ./app:/var/www
