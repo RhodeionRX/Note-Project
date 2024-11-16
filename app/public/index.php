@@ -1,6 +1,11 @@
 <?php
-(@include '../src/app.php') or die('Could not run an app');
+require_once '../src/app.php';
 
 $app = new App();
-$app->HelloWorld();
-?>
+
+$app->router->get('/', function () {
+    echo 'test';
+});
+
+$app->start();
+
