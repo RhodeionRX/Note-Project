@@ -1,5 +1,7 @@
 <?php 
 require_once __DIR__ . "/Router.php";
+require_once __DIR__ . "/Request.php";
+
 class App 
 {
     public function __construct() {
@@ -7,20 +9,14 @@ class App
         $this->router = new Router($this);
     }
 
-    public string $host;
-    public string $uri;
-    public string $method;
-    public string $params;
     public Router $router;
+    public Request $request;
 
     public function start() {
-        $this->router->execute($this->uri);
+        $this->router->execute($this->request->uri());
     }
 
     private function initRequest() {
-        $this->host = $_SERVER['HTTP_HOST'];
-        $this->uri = explode('?', $_SERVER['REQUEST_URI'])[0];
-        $this->method = $_SERVER['REQUEST_METHOD'];
-        $this->params = $_SERVER['QUERY_STRING'];
+        $this->request = new Request();
     }
 }

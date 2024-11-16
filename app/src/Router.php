@@ -17,6 +17,6 @@ class Router {
     }
 
     public function execute(string $path) {
-        $this->routes[ $path ][ $this->app->method ]();
+        $this->routes[ $path ][ $this->app->request->method() ]();
     }
 }
