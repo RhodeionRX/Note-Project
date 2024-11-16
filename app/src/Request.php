@@ -27,6 +27,4 @@ class Request {
      public function params(): array | string {
         return $this->params;
     }
-
-
 }

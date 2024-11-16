@@ -5,7 +5,7 @@ require_once __DIR__ . "/Request.php";
 class App 
 {
     public function __construct() {
-        $this->initRequest();
+        $this->request = new Request();
         $this->router = new Router($this);
     }
 
@@ -14,9 +14,5 @@ class App
 
     public function start() {
         $this->router->execute($this->request->uri());
-    }
-
-    private function initRequest() {
-        $this->request = new Request();
     }
 }
