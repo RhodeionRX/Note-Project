@@ -19,7 +19,7 @@ class App
 
     private function initRequest() {
         $this->host = $_SERVER['HTTP_HOST'];
-        $this->uri = $_SERVER['REQUEST_URI'];
+        $this->uri = explode('?', $_SERVER['REQUEST_URI'])[0];
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->params = $_SERVER['QUERY_STRING'];
     }
